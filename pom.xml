@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.gammadata</groupId>
-  <artifactId>ng-grid-mongo</artifactId>
+  <artifactId>angular-grid-mongo</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>ng-grid-mongo</name>
+  <name>angular-grid-mongo</name>
 
   <build>
     <finalName>ng-grid-mongo</finalName>
