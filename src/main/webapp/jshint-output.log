@@ -1,0 +1,7 @@
+1 lint errors found in /Users/gfr/LocalRepository/ng-grid-mongo/ng-grid-mongo/src/main/webapp/app/css_theme/cssController.js
+  [8,3](W030) Expected an assignment or function call and instead saw an expression.1 lint errors found in /Users/gfr/LocalRepository/ng-grid-mongo/ng-grid-mongo/src/main/webapp/app/main/accessService.js
+  [5,3](W030) Expected an assignment or function call and instead saw an expression.3 lint errors found in /Users/gfr/LocalRepository/ng-grid-mongo/ng-grid-mongo/src/main/webapp/app/main/mainController.js
+  [5,3](W030) Expected an assignment or function call and instead saw an expression.
+  [14,11](W014) Bad line breaking before '+'.
+  [15,11](W014) Bad line breaking before '+'.1 lint errors found in /Users/gfr/LocalRepository/ng-grid-mongo/ng-grid-mongo/src/main/webapp/app/main/mainValues.js
+  [5,2](W030) Expected an assignment or function call and instead saw an expression.

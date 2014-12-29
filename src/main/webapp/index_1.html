@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>angularjs scaffolding App</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="lib/ui-grid-3.0.0/ui-grid.js" type="text/javascript"></script>
+    
+    <script src="app/app.js"></script> 
+    
+    <script src="app/main/mainController.js" type="text/javascript"></script>
+    <script src="app/main/mainValues.js"></script>
+    <script src="app/main/mainUtilities.js"></script>
+    <script src="app/main/accessService.js"></script>       
+  </head>
+  <body ng-app="mainmodule">
+    <div ng-controller="MainController">
+      AppInfo = {{info}}
+    </div>
+  </body>
+</html>
