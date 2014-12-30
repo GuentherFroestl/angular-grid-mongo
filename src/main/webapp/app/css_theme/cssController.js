@@ -8,10 +8,10 @@
   "use strict";
   // accessing the module in another. 
   // this can be done by calling angular.module without the []-brackets
-  global.angular.module('mainmodule')
+  global.angular.module('mainModule')
     .controller('CssController', [
-      '$location', '$log', '$scope', 'accessService', 'mainUtilities', 'mainValues',
-      function ($location, $log, $scope, accessService, mainUtilities, mainValues)
+      '$location', '$log', '$scope', 'accessService', 'mainUtilities',
+      function ($location, $log, $scope, accessService, mainUtilities)
       {
         $scope.selectedTheme={};
         $scope.currentPath = $location.path();
@@ -26,7 +26,7 @@
         $scope.selectTheme = function (theme) {
           $log.info("CssController selectTheme:", theme);
           $scope.selectedTheme = theme;
-          global.jQuery("link").attr("href", theme.css);
+          global.jQuery("#bootstrap").attr("href", theme.css);
         };
         $scope.isSelectedTheme = function(theme){
           if (global.angular.isDefined(theme) && theme.name ===$scope.selectedTheme.name){

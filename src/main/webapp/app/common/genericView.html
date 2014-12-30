@@ -1,0 +1,18 @@
+<div class="panel panel-default" ng-init="init()">
+  <div class="panel-heading">{{title}}</div>
+  <div class="panel-body">
+
+
+
+    <div class="grid" 
+         ng-if="hasGrid"
+         ui-grid="gridOptions"
+         ui-grid-edit
+         ui-grid-cellnav
+         ui-grid-resize-columns
+         ui-grid-selection
+         ui-grid-row-edit></div>
+  </div>
+  guiConfigInfo: {{guiConfigInfo}}
+
+</div>
