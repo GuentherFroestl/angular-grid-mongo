@@ -1,18 +1,47 @@
-<div class="panel panel-default" ng-init="init()">
-  <div class="panel-heading">{{title}}</div>
-  <div class="panel-body">
+<div ng-init="init()">
+  <h4>{{title}}</h4>
+  <div class="panel panel-default"  ng-if="hasGrid">
+    <div class="panel-heading" >
 
 
+      <input ng-model="searchText" type="text" id="searchText" ng-change="search(searchText)">
+      <button type="button" ng-click="search(searchText)" class="btn btn-default">
+        <span class="glyphicon glyphicon-search"></span></button>
 
-    <div class="grid" 
-         ng-if="hasGrid"
+      <div class=" pull-right">
+        <button type="button" ng-click="delete()" class="btn btn-default">
+          <span class="glyphicon glyphicon-trash"></span></button>
+        <button type="button" ng-click="add()" class="btn btn-default">
+          <span class="glyphicon glyphicon-plus"></span></button>
+
+        <button  type="button" ng-click="edit()" ng-disabled="editModus"
+                 class="btn btn-default">
+          <span class="glyphicon glyphicon-pencil"></span></button>
+        <button type="button" ng-click="cancel()" ng-disabled="!editModus"
+                class="btn btn-default">
+          <span class="glyphicon glyphicon-remove"></span></button>
+
+        <button type="button" ng-click="save()" ng-disabled="!editModus"
+                class="btn btn-default">
+          <span class="glyphicon glyphicon-ok"></span></button>
+      </div>
+
+
+    </div>
+    <div class="panel-body, grid" 
          ui-grid="gridOptions"
          ui-grid-edit
          ui-grid-cellnav
          ui-grid-resize-columns
          ui-grid-selection
-         ui-grid-row-edit></div>
-  </div>
-  guiConfigInfo: {{guiConfigInfo}}
+         ui-grid-row-edit>
 
+    </div>
+  </div>
 </div>
+
+
+
+
+guiConfigInfo: {{guiConfigInfo}}
+

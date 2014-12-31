@@ -56,7 +56,7 @@
                                 label: "Titel",
                                 type: "String",
                                 focusable: true,
-                                filterable: false,
+                                filterable: true,
                                 sortOrder: "ASC"
                               },
                               {

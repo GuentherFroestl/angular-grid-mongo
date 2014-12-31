@@ -7,15 +7,15 @@
   // this can be done by calling angular.module without the []-brackets
   global.angular.module('mainModule')
     .controller('GenericViewController', [
-      '$scope', '$route', '$log', 'accessService', 'mainUtilities', 'appProperties',
-      function ($scope, $route, $log, accessService, mainUtilities, appProperties) {
+      '$scope', '$route', '$log', 'accessService', 'mainUtilities', 'objectFactory',
+      function ($scope, $route, $log, accessService, mainUtilities, objectFactory) {
         $scope.title = $route.current.title;
         $scope.hasObjects = false;
         $scope.hasGrid = false;
         $scope.gridOptions = {};
-        $scope.editModus = true;
+        $scope.editModus = false;
         $scope.data = [];
-        $scope.url = {};
+        $scope.currentObjectDef = {};
 
         $scope.init = function () {
 
@@ -25,7 +25,7 @@
             if (global.angular.isArray($route.current.guiConfig.objects) && $route.current.guiConfig.objects.length > 0) {
               $scope.currentObjectDef = $route.current.guiConfig.objects[0];
               $scope.hasObjects = true;
-              $scope.url = $scope.currentObjectDef.resource;
+
               if (global.angular.isDefined($scope.currentObjectDef.listView) &&
                 $scope.currentObjectDef.listView.viewType === 'list' &&
                 $scope.currentObjectDef.listView.implType === 'ui-grid') {
@@ -47,14 +47,14 @@
                   $scope.setData = function (data) {
                     $scope.gridOptions.data = data;
                   };
-                  populateView($scope.url);
+                  populateView($scope.currentObjectDef.resource);
                   $scope.gridOptions =
                     {
                       restCall: $scope.currentObjectDef.resource,
                       enableColumnResize: true,
                       enableCellEditOnFocus: cellEditFunction,
+                      enableFiltering: false,
                       multiSelect: true,
-//                      enableFiltering: true,
                       //to prevent autosave of dirty rows,
                       rowEditWaitInterval: -1,
                       columnDefs: columnDefs
@@ -62,7 +62,6 @@
                   global.console.log("$scope.gridOptions: ", $scope.gridOptions);
                 }
               }
-
             }
           }
         };
@@ -70,6 +69,38 @@
         var cellEditFunction = function (scopeIn) {
           return $scope.editModus;
         };
+
+        /*
+         * GUI function 
+         */
+        $scope.edit = function () {
+          enableEdit();
+        };
+        /*
+         * GUI function
+         */
+        $scope.add = function () {
+          enableEdit();
+          var newRow = objectFactory.newInstanceForName($scope.currentObjectDef.className);
+          $scope.gridOptions.data.push(newRow);
+        };
+
+        /*
+         * GUI function
+         */
+        $scope.cancel = function () {
+          disableEdit();
+        };
+
+        function enableEdit() {
+          $scope.gridOptions.enableCellEditOnFocus = true;
+          $scope.editModus = true;
+        }
+
+        function disableEdit() {
+          $scope.gridOptions.enableCellEditOnFocus = false;
+          $scope.editModus = false;
+        }
 
         function populateView(url) {
           accessService.list(url)
